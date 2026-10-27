@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gemini Compass | Discover Yourself</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#101326;color:#f5f3ff;line-height:1.6}
+header{text-align:center;padding:35px 20px;background:linear-gradient(145deg,#29205c,#12172f)}
+.logo{font-size:42px}
+h1{margin:8px 0;color:#f5d77b;font-size:30px}
+header p{max-width:450px;margin:auto;color:#d6d1f3}
+main{max-width:650px;margin:auto;padding:20px}
+.card{background:#1c203a;border:1px solid #373b5c;border-radius:16px;padding:20px;margin:18px 0}
+h2{color:#f5d77b;font-size:21px;margin-top:0}
+label{display:block;margin:14px 0 6px}
+input,select,textarea{width:100%;padding:12px;border-radius:9px;border:1px solid #626887;background:#11162b;color:white;font-size:16px}
+button{background:#e7ca72;color:#17152b;border:0;border-radius:9px;padding:13px 17px;font-size:16px;font-weight:bold;margin-top:16px;cursor:pointer}
+button.secondary{background:#353b60;color:white;margin-left:5px}
+.result{white-space:pre-line;color:#e3e3f7}
+.small{font-size:13px;color:#b8bdd9}
+footer{text-align:center;padding:25px;color:#b8bdd9}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">✦ ♊ ✦</div>
+<h1>Gemini Compass</h1>
+<p>Discover yourself. Understand yourself. Build your life.</p>
+</header>
+<main>
+<section class="card">
+<h2>Welcome to your journey</h2>
+<p>This is your space to reflect on who you are, recognise your strengths, work on challenges, and turn your goals into action.</p>
+<p class="small">Astrology is used here as a reflection theme, not a scientific personality test. Your experiences and choices matter more than your zodiac sign.</p>
+</section>
+
+<section class="card">
+<h2>1. Your self-discovery check-in</h2>
+<label for="strength">What do you think is one of your strengths?</label>
+<input id="strength" placeholder="e.g. curiosity, creativity, problem-solving">
+<label for="challenge">What would you like to improve?</label>
+<input id="challenge" placeholder="e.g. focus, confidence, patience">
+<label for="goal">What matters most to you right now?</label>
+<select id="goal">
+<option value="">Choose one</option>
+<option>Personal growth</option>
+<option>Career or business</option>
+<option>Money management</option>
+<option>Relationships</option>
+<option>Confidence</option>
+<option>Discipline and habits</option>
+</select>
+<label for="habit">What is one habit you want to build?</label>
+<input id="habit" placeholder="e.g. planning tomorrow each evening">
+<button onclick="makePlan()">Create my reflection</button>
+<div id="reflection" class="result" aria-live="polite"></div>
+</section>
+
+<section class="card">
+<h2>2. A little Gemini reflection</h2>
+<p>Gemini is traditionally associated with curiosity, communication, adaptability, and exploring different ideas. These are themes to consider, not facts that must describe you.</p>
+<p><b>Ask yourself:</b> Does exploring many ideas help me learn, or sometimes make it difficult to finish what I start?</p>
+<p>Write your own answer below.</p>
+<textarea id="answer" rows="3" placeholder="My honest reflection..."></textarea>
+<button onclick="saveReflection()">Show my reflection</button>
+<div id="savedReflection" class="result" aria-live="polite"></div>
+</section>
+
+<section class="card">
+<h2>3. Your next small step</h2>
+<p>Choose one manageable action you can take today. Progress comes from actions you can repeat.</p>
+<input id="action" placeholder="One action I will take today...">
+<button onclick="setAction()">Set my goal</button>
+<div id="goalResult" class="result" aria-live="polite"></div>
+</section>
+<footer>
+<p>Gemini Compass · Early prototype</p>
+<p class="small">Your answers stay in this page and are not saved to an account. Avoid entering sensitive personal information.</p>
+</main>
+<script>
+function makePlan(){
+const s=document.getElementById('strength').value.trim();
+const c=document.getElementById('challenge').value.trim();
+const g=document.getElementById('goal').value;
+const h=document.getElementById('habit').value.trim();
+if(!s||!c||!g||!h){alert('Please answer all four questions first.');return;}
+document.getElementById('reflection').textContent=
+'YOUR PERSONAL REFLECTION\n\nStrength to build on: '+s+'. Look for one real example of how you have used this strength.\n\nArea to develop: '+c+'. Choose one small situation this week in which you can practise improving it.\n\nCurrent priority: '+g+'. Give this priority one focused action rather than trying to change everything at once.\n\nHabit to practise: '+h+'. Start small and decide when you will do it. Review your progress after seven days.\n\nRemember: these suggestions are a starting point. You know your own circumstances best.';
+}
+function saveReflection(){
+const a=document.getElementById('answer').value.trim();
+if(!a){alert('Write your reflection first.');return;}
+document.getElementById('savedReflection').textContent='YOUR REFLECTION\n\n'+a+'\n\nConsider: What does this tell you about your preferences? What is one practical change you want to try?';
+}
+function setAction(){
+const a=document.getElementById('action').value.trim();
+if(!a){alert('Enter one small action first.');return;}
+document.getElementById('goalResult').textContent='YOUR NEXT STEP\n\n'+a+'\n\nWhen will you do it? Choose a realistic time and check back with yourself afterwards.';
+}
+</script>
+</body>
+</html>
+￼Enter
